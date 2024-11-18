@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppCadastroEventos.Views.EventoCadastro"
+             Title="EventoCadastro">
+    <VerticalStackLayout VerticalOptions="CenterAndExpand"
+        Padding="10"
+        Spacing="10">
+
+        <Label 
+            Text="Cadastro do Evento"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Title"
+            FontFamily="TimesNewRoman"/>
+
+        <!--Nome do Evento-->
+        <Label
+            FontSize="Medium"
+            Text="Evento"/>
+        <Entry
+            BackgroundColor="AliceBlue"
+            Placeholder="Nome do evento"
+            PlaceholderColor="DarkGray"
+            x:Name="txt_NomeEvento"/>
+
+        <!--Data e número de pessoas-->
+        <!--**Início do evento**-->
+        <VerticalStackLayout>
+            <Label Text="Data de início"
+           FontSize="Medium"/>
+
+            <HorizontalStackLayout>
+                <DatePicker x:Name="dtpck_DataInicio"
+                    DateSelected="dtpck_DataInicio_DateSelected"
+                    Format="dd/MM/yyyy"/>
+            </HorizontalStackLayout>
+
+            <!--**Término evento**-->
+            <Label Text="Data de término"
+           FontSize="Medium"/>
+
+            <HorizontalStackLayout>
+                <DatePicker x:Name="dtpck_DataTermino"
+                    Format="dd/MM/yyyy"/>
+            </HorizontalStackLayout>
+
+            <!--Quantidade de participantes-->
+            <Label Text="Quatidade de participantes"
+                       FontSize="Medium"/>
+
+            <HorizontalStackLayout>
+                <Stepper Grid.Row="0" Grid.Column="1"
+                    x:Name="stp_participantes"
+                    Minimum="1"
+                    Increment="1"
+                    Value="{Binding Participantes}"
+                    />
+
+                <Label Text="{Binding Participantes}"
+                       Padding="10"
+                       TextColor="{StaticResource Primary}"
+                    />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+
+        <!--Local do evento-->
+        <Label
+            FontSize="Medium"
+            Text="Local do Evento"/>
+        <Entry
+            BackgroundColor="AliceBlue"
+            Placeholder="Local do Evento"
+            PlaceholderColor="DarkGray"
+            Text="{Binding Local}" />
+
+        <!--Custo por participante-->
+        <Label
+            FontSize="Medium"
+            Text="Custo por participante"/>
+        <Entry
+            Background="AliceBlue"
+            Placeholder="Custo por participante"
+            PlaceholderColor="DarkGray"
+            Text="{Binding CustoParticipantes}"
+            Keyboard="Numeric"
+            />
+
+        <Button
+            Text="Cadastrar"
+            FontAttributes="Bold"
+            HorizontalOptions="Start"
+            Clicked="Button_Cadastrar_Clicked"/>
+
+        <!--
+        <Button
+            Text="Avançar"
+            FontAttributes="Bold"
+            HorizontalOptions="Start"
+            Clicked="Button_Clicked"
+            /> 
+        -->
+
+    </VerticalStackLayout>
+</ContentPage>
